@@ -10,5 +10,5 @@ var app = express();
 var psp = passport();
 
 app.listen(process.env.PORT, () => {
-       console.log('Starting node.js on port ' + process.env.PORT);
+    console.log('Starting node.js on port ' + process.env.PORT);
 });
