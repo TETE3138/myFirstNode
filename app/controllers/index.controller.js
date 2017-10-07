@@ -1,7 +1,23 @@
-exports.index = (req, res) => {
+/* exports.index = (req, res) => {
     res.send('Hello World');
+} */
+
+// add this code in file ./app/controllers/index.controller.js
+var path = require("path");
+exports.index = (req, res) => {
+       res.sendFile((path.join(__dirname + '/../views/index.html')));
 }
 
 exports.help = (req, res) => {
     res.send('Help me');
+}
+
+exports.home = (req, res) => {
+       if (req.user) {
+              //res.sendFile((path.join(__dirname + '/../views/home.html')));
+              res.render((path.join(__dirname +	'/../views/home.html')),	{	username:	req.user.username });
+       }
+       else {
+              res.status(400).send({ message: 'User is not signed in' });
+       }
 }
